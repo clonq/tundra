@@ -1,0 +1,18 @@
+{
+    "INVALID_PAYLOAD": {
+        "code": 996,
+        "message": "invalid payload"
+    },
+    "NOT_IMPLEMENTED": {
+        "code": 997,
+        "message": "feature not implemented"
+    },
+    "WIP": {
+        "code": 998,
+        "message": "work in progress"
+    },
+    "UNKNOWN": {
+        "code": 999,
+        "message": "unknown app error"
+    }
+}

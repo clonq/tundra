@@ -1,0 +1,59 @@
+#!/usr/bin/env node
+const debug = require('debug')('tundra:server');
+const http = require('http');
+const chalk = require('chalk');
+// const datastore = require('../middleware/datastore');
+const app = require('../app');
+const PKG = require('../package.json');
+
+var port = normalizePort(process.env.PORT || '3001');
+app.set('port', port);
+
+var server = http.createServer(app);
+
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+      // datastore.disconnect();
+      throw error;
+  }
+  switch (error.code) {
+      case 'EACCES':
+          debug(`${port} requires elevated privileges`);
+          // datastore.disconnect();
+          process.exit(1);
+          break;
+      case 'EADDRINUSE':
+          debug(`${port} is already in use`);
+          // datastore.disconnect();
+          process.exit(1);
+          break;
+      default:
+          debug('server error', {attach:error});
+          throw error;
+  }
+}
+
+function onListening() {
+  debug(`${chalk.green.bold(PKG.name + ' server ver ' + PKG.version + ' started on port ' + app.get('port'))}`);
+  // datastore.connect();
+}

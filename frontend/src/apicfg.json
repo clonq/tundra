@@ -1,0 +1,22 @@
+{
+  "getUsers": {
+    "method": "GET",
+    "base": "http://localhost:3001",
+    "url": "/users"
+  },
+  "createUser": {
+    "method": "POST",
+    "base": "http://localhost:3001",
+    "url": "/users"
+  },
+  "updateUser": {
+    "method": "PUT",
+    "base": "http://localhost:3001",
+    "url": "/users/{id}"
+  },
+  "deleteUser": {
+    "method": "DELETE",
+    "base": "http://localhost:3001",
+    "url": "/users/{id}"
+  }
+}
